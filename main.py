@@ -11,9 +11,9 @@ MEMORY_THRESHOLD = 90
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
+was_under_attack = False
 async def monitor_network():
-    was_under_attack = False
-
+    global was_under_attack
     while True:
         net_io = psutil.net_io_counters()
         packets_sent = net_io.packets_sent
